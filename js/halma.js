@@ -55,7 +55,7 @@ function halmaOnClick(e) {
     }
     
     
-	webSocket.send('onClick  with row=' + cell.row + ' cell=' + cell.column);
+	//webSocket.send('onClick  with row=' + cell.row + ' cell=' + cell.column);
     
     clickOnEmptyCell(cell);
 }
@@ -70,8 +70,9 @@ function clickOnEmptyCell(cell) {
 	if ((rowDiff <= 1) && (columnDiff <= 1)) {
 		/* we already know that this click was on an empty square,
 		 so that must mean this was a valid single-square move */
-		gPieces[gSelectedPieceIndex].row = cell.row;
-		gPieces[gSelectedPieceIndex].column = cell.column;
+		
+		webSocket.send(gSelectedPieceIndex + ' ' + cell.row + ' ' + cell.column);
+		
 		gMoveCount += 1;
 		gSelectedPieceIndex = -1;
 		gSelectedPieceHasMoved = false;
@@ -84,8 +85,9 @@ function clickOnEmptyCell(cell) {
 			gMoveCount += 1;
 		}
 		gSelectedPieceHasMoved = true;
-		gPieces[gSelectedPieceIndex].row = cell.row;
-		gPieces[gSelectedPieceIndex].column = cell.column;
+
+		webSocket.send(gSelectedPieceIndex + ' ' + cell.row + ' ' + cell.column);
+
 		drawBoard();
 		return;
 	}
@@ -246,7 +248,13 @@ function initGame(canvasElement, moveCountElement) {
 	};
 
 	function onMessage(event) {
-		document.getElementById('output').innerHTML += '<br />' + event.data;
+		//document.getElementById('output').innerHTML += '<br />' + event.data;
+
+		var c = event.data.toString().split(' ');
+		
+		gPieces[c[0]].row = c[1];
+		gPieces[c[0]].column = c[2];
+		drawBoard();
 	}
 
 	function onOpen(event) {
