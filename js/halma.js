@@ -6,6 +6,8 @@ var kPieceHeight= 50;
 var kPixelWidth = 1 + (kBoardWidth * kPieceWidth);
 var kPixelHeight= 1 + (kBoardHeight * kPieceHeight);
 
+var webSocket;
+
 var gCanvasElement;
 var gDrawingContext;
 var gPattern;
@@ -46,12 +48,15 @@ function getCursorPosition(e) {
 function halmaOnClick(e) {
     var cell = getCursorPosition(e);
     for (var i = 0; i < gNumPieces; i++) {
-	if ((gPieces[i].row == cell.row) && 
-	    (gPieces[i].column == cell.column)) {
-	    clickOnPiece(i);
-	    return;
-	}
+		if ((gPieces[i].row == cell.row) && (gPieces[i].column == cell.column)) {
+			clickOnPiece(i);
+			return;
+		}
     }
+    
+    
+	webSocket.send('onClick  with row=' + cell.row + ' cell=' + cell.column);
+    
     clickOnEmptyCell(cell);
 }
 
@@ -225,4 +230,33 @@ function initGame(canvasElement, moveCountElement) {
     if (!resumeGame()) {
 	newGame();
     }
+    
+
+	webSocket = new WebSocket('ws://localhost:8080/brainstorm-0.0.1-SNAPSHOT/halmawebsocket');
+
+	webSocket.onerror = function(event) {
+		onError(event)
+	};
+
+	webSocket.onopen = function(event) {
+		onOpen(event)
+	};
+
+	webSocket.onmessage = function(event) {
+		onMessage(event)
+	};
+
+	function onMessage(event) {
+		document.getElementById('messages').innerHTML += '<br />' + event.data;
+	}
+
+	function onOpen(event) {
+		document.getElementById('messages').innerHTML = 'Connection established';
+	}
+
+	function onError(event) {
+		alert(event.data);
+	}
+
+   
 }
