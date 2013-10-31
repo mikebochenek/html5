@@ -10,8 +10,10 @@
 <!-- completely 100% copied from http://diveintohtml5.info/canvas.html for learning purposes -->
 <h1>Canvas Halma</h1>
 <p id="moves">Moves count: <span id="movecount">0</span></p>
+<canvas id="mycanvas" width="500" height="500"></canvas>
+<div id="output"></div>
 <script>
-  initGame(null, document.getElementById('movecount'));
+  initGame(document.getElementById('mycanvas'), document.getElementById('movecount'));
 </script>
 </body>
 </html>

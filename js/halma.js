@@ -60,39 +60,38 @@ function halmaOnClick(e) {
     clickOnEmptyCell(cell);
 }
 
+
 function clickOnEmptyCell(cell) {
-    if (gSelectedPieceIndex == -1) { return; }
-    var rowDiff = Math.abs(cell.row - gPieces[gSelectedPieceIndex].row);
-    var columnDiff = Math.abs(cell.column - gPieces[gSelectedPieceIndex].column);
-    if ((rowDiff <= 1) &&
-	(columnDiff <= 1)) {
-	/* we already know that this click was on an empty square,
-	   so that must mean this was a valid single-square move */
-	gPieces[gSelectedPieceIndex].row = cell.row;
-	gPieces[gSelectedPieceIndex].column = cell.column;
-	gMoveCount += 1;
+	if (gSelectedPieceIndex == -1) {
+		return;
+	}
+	var rowDiff = Math.abs(cell.row - gPieces[gSelectedPieceIndex].row);
+	var columnDiff = Math.abs(cell.column - gPieces[gSelectedPieceIndex].column);
+	if ((rowDiff <= 1) && (columnDiff <= 1)) {
+		/* we already know that this click was on an empty square,
+		 so that must mean this was a valid single-square move */
+		gPieces[gSelectedPieceIndex].row = cell.row;
+		gPieces[gSelectedPieceIndex].column = cell.column;
+		gMoveCount += 1;
+		gSelectedPieceIndex = -1;
+		gSelectedPieceHasMoved = false;
+		drawBoard();
+		return;
+	}
+	if ((((rowDiff == 2) && (columnDiff == 0)) || ((rowDiff == 0) && (columnDiff == 2)) || ((rowDiff == 2) && (columnDiff == 2))) && isThereAPieceBetween(gPieces[gSelectedPieceIndex], cell)) {
+		/* this was a valid jump */
+		if (!gSelectedPieceHasMoved) {
+			gMoveCount += 1;
+		}
+		gSelectedPieceHasMoved = true;
+		gPieces[gSelectedPieceIndex].row = cell.row;
+		gPieces[gSelectedPieceIndex].column = cell.column;
+		drawBoard();
+		return;
+	}
 	gSelectedPieceIndex = -1;
 	gSelectedPieceHasMoved = false;
 	drawBoard();
-	return;
-    }
-    if ((((rowDiff == 2) && (columnDiff == 0)) ||
-	 ((rowDiff == 0) && (columnDiff == 2)) ||
-	 ((rowDiff == 2) && (columnDiff == 2))) && 
-	isThereAPieceBetween(gPieces[gSelectedPieceIndex], cell)) {
-	/* this was a valid jump */
-	if (!gSelectedPieceHasMoved) {
-	    gMoveCount += 1;
-	}
-	gSelectedPieceHasMoved = true;
-	gPieces[gSelectedPieceIndex].row = cell.row;
-	gPieces[gSelectedPieceIndex].column = cell.column;
-	drawBoard();
-	return;
-    }
-    gSelectedPieceIndex = -1;
-    gSelectedPieceHasMoved = false;
-    drawBoard();
 }
 
 function clickOnPiece(pieceIndex) {
@@ -247,11 +246,11 @@ function initGame(canvasElement, moveCountElement) {
 	};
 
 	function onMessage(event) {
-		document.getElementById('messages').innerHTML += '<br />' + event.data;
+		document.getElementById('output').innerHTML += '<br />' + event.data;
 	}
 
 	function onOpen(event) {
-		document.getElementById('messages').innerHTML = 'Connection established';
+		document.getElementById('output').innerHTML = 'Connection established';
 	}
 
 	function onError(event) {
