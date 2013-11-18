@@ -22,6 +22,11 @@ svgEditor.addExtension("Mine", function() {
 		}],
 
 		elementChanged : function(opts) {
+			if (!websocketSession) {
+				console.log('trying to do open...');
+				open();
+			}
+			sendMessage('sending to backend');
 			console.log('my log elementChanged', opts);
 			var elem = opts.elems[0];
 		}
