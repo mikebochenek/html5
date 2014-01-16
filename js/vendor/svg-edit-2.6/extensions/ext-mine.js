@@ -26,8 +26,8 @@ svgEditor.addExtension("Mine", function() {
 				console.log('trying to do open once agian because we failed to open it before...');
 				open();
 			}
-			sendMessage('blah blah message for backend');
-			//console.log('my log elementChanged', opts);
+			//sendMessage('blah blah message for backend');
+			console.log('my log elementChanged', opts);
 			var elem = opts.elems[0];
 		}
 	};
