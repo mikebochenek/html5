@@ -20,8 +20,8 @@
         <tr ng-repeat="post in posts | orderBy:id">
             <td>{{post.id}}</td>
             <td>{{post.title}}</td>
-            <td>{{post.content}}</td>
-            <td><a href="rest/posts/{{post.id}}">/rest/posts/{{post.id}}</a>
+            <td><div ng-bind-html-unsafe="post.content"></div></td>
+            <td><a href="http://localhost:8080/angular-blog/rest/posts/{{post.id}}">/rest/posts/{{post.id}}</a>
             </td>
     </table>
     <div>
