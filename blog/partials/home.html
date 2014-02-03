@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This is a partial, and is templated by AngularJS -->
-<div>
-    <h1>Welcome to the blog!</h1>
-
-    <!-- A list of registered members -->
-    <h2>Posts</h2>
+<div style="font-family: Arial, 'MS Trebuchet', sans-serif;">
     <!-- If there are no members registered, instead of showing the table, we show a simple message. -->
     <em ng-show="posts.length == 0">No registered members.</em>
-    <table ng-hide="posts.length == 0" class="simpletablestyle">
+    
+    <table ng-hide="posts.length == 0" class="simpletablestyle" 
+    	border=1 cellpadding=3 cellspacing=1 rules=rows frame=hsides>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
+                <th>Date & Title</th>
                 <th>Content</th>
-                <th>REST URL</th>
             </tr>
         </thead>
         <!-- The table is built using the AngularJS repeat function, iterating over the members variable, and ordering by the property specified in the orderBy variable -->
         <tr ng-repeat="post in posts | orderBy:id">
-            <td>{{post.id}}</td>
-            <td>{{post.title}}</td>
+            <td width="50px"><small>{{post.date | date:'mediumDate'}}<br>(id:{{post.id}})<br>{{post.title}}</small></td>
             <td><div ng-bind-html-unsafe="post.content"></div></td>
-            <td><a href="http://localhost:8080/angular-blog/rest/posts/{{post.id}}">/rest/posts/{{post.id}}</a>
-            </td>
+        </tr>
     </table>
     <div>
         REST URL for all members: <a href="rest/posts">/rest/posts</a>
