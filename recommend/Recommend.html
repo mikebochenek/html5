@@ -6,6 +6,8 @@
 		<title>Recommend</title>
 		<link type="text/css" href="./Recommend_files/jquery-ui-1.8.16.custom.css" rel="stylesheet">	
 		<link type="text/css" href="./Recommend_files/style.css" rel="stylesheet">	
+		
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
 
 		<script type="text/javascript" src="./Recommend_files/tagmagic.js"></script>
 		
@@ -13,8 +15,13 @@
 		<script type="text/javascript" src="./Recommend_files/jquery-ui.min.js"></script><script type="text/javascript" src="./Recommend_files/jsf.js.faces"></script><style>.cke{visibility:hidden;}</style><script type="text/javascript" src="./Recommend_files/config.js"></script><link rel="stylesheet" type="text/css" href="./Recommend_files/editor.css"><script type="text/javascript" src="./Recommend_files/en.js"></script><style id="cke_ui_color" type="text/css"></style><script type="text/javascript" src="./Recommend_files/styles.js"></script></head><body>
  
    <div id="wrapper">
+   	
+   	<div id="badges" style="display:none">
+   		<img src="img/health.jpg" />
+   	</div>
    <div class="container" id="container">  
  
+	
 	<div id="page">
  
 	    <div id="header">
@@ -44,10 +51,15 @@
 					_newValLen = newVal.length;
 				}
 			}
+			function showbadges() {
+				//alert ('showbadges');
+				$('#badges').fadeIn('slow');
+			}
 			var _newValLen = 0;
 			$(function(){
 		        CKEDITOR.replace(($('#ckeditorparent'))[0].firstChild.id, { customConfig: '/js/ckeditor/config.js' } );
 				window.setInterval(autosave, 5000);
+				window.setTimeout(showbadges, 3000);
 			});
       </script>
 <form id="j_idt10" name="j_idt10" method="post" action="http://localhost:8080/write.faces;jsessionid=Pc2Vf1JSJr83RNVakThSxDIi" enctype="application/x-www-form-urlencoded">
