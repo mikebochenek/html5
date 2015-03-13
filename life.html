@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>cs</title>
+	<meta name="author" content="Mike" />
+	<!-- Date: 2015-02-20 -->
+</head>
+<body>
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+<script>
+$( document ).ready(function() {
+  var newTotal = 1062 * 34; // 425 + 637 = 1062
+  var d = new Date();
+  var month = d.getMonth()+1;
+  var year = d.getFullYear() ;
+  var monthly = 1615; // 8500 * 19% = 1615
+  var dynamic = ((year - 2014) * 12 + (month - 3)) * monthly;
+  //console.log('dynamic: ' + (dynamic/monthly));
+  newTotal = newTotal + dynamic;
+  //console.log(newTotal);		
+  //$('#total').replaceWith(newTotal);
+  $('#datets').replaceWith(d);
+});
+</script>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"> 
+      <h2>countries</h2>
+      <table class="table table-striped">
+        <tr><td>years</td><td>country</td></tr>
+        <tr><td>10</td><td>Poland</td></tr>
+        <tr><td>2</td><td>Germany</td></tr>
+        <tr><td>9</td><td>Canada</td></tr>
+        <tr><td>3</td><td>Switerland</td></tr>
+        <tr><td>1</td><td>Canada</td></tr>
+        <tr><td>6</td><td>USA</td></tr>
+        <tr><td>4</td><td>Switzerland</td></tr>
+      </table>
+      
+      <h2>schools &amp; jobs</h2>
+      <table class="table table-striped">
+        <tr><td>age</td><td>org</td><td>years</td><td>income</td></tr>
+        <tr><td>15-19</td><td>Notre Dame High School</td><td>5</td><td>7000</td></tr>
+        <tr><td>19-22</td><td>University of Guelph</td><td>3</td><td>10000</td></tr>
+        <tr><td>22-25</td><td>Deltavista</td><td>3</td><td>260000</td></tr>
+        <tr><td>25-26</td><td>Truition</td><td>1</td><td>50000</td></tr>
+        <tr><td>26-32</td><td>SuccessFactors</td><td>6</td><td>600000</td></tr>
+        <tr><td>32-36</td><td>Credit Suisse</td><td>4</td><td>500000</td></tr>
+      </table>
+
+      <div id="datets">ts</div>
+    </div>
+    <div class="col-md-3"></div>
+ 
+  </div>
+</div>
+
+
+</body>
+</html>
+
