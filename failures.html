@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<titlefailures</title>
+	<meta name="author" content="Mike" />
+	<!-- Date: 2015-02-20 -->
+</head>
+<body>
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+<script>
+$( document ).ready(function() {
+  var newTotal = 1062 * 34; // 425 + 637 = 1062
+  var d = new Date();
+  var month = d.getMonth()+1;
+  var year = d.getFullYear() ;
+  var monthly = 1615; // 8500 * 19% = 1615
+  var dynamic = ((year - 2014) * 12 + (month - 3)) * monthly;
+  //console.log('dynamic: ' + (dynamic/monthly));
+  newTotal = newTotal + dynamic;
+  //console.log(newTotal);		
+  //$('#total').replaceWith(newTotal);
+  $('#datets').replaceWith(d);
+});
+</script>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"> 
+      <h2>public failures and unfinished ideas</h2>
+      <table class="table table-striped">
+        <tr><td><b>year</b></td><td><b>project</b></td></tr>
+        <tr><td>2004</td><td>HTML: <a href="http://www.bochenek.ca">bochenek.ca</a></td></tr>
+        <tr><td>2009</td><td>Google App Engine: <a href="https://cryptools.appspot.com">cryptools</a></td></tr>
+        <tr><td>2010</td><td>Google App Engine: <a href="https://vantaa2.appspot.com">recommendations (vantaa)</a></td></tr>
+        <tr><td>2011</td><td>Java &amp; JQuery: <a href="http://recommendme.ch">recommendme.ch (vantaa)</a></td></tr>
+        <tr><td>2012</td><td>HTML: <a href="http://www.bochenek.ch">bochenek.ch</a></td></tr>
+        <tr><td>2013</td><td>Android: <a href="http://bochenek.ch/img/android-fitness.png">21 day fitness tracker</a></td></tr>
+        <tr><td>2013</td><td>Java: <a href="https://github.com/mikebochenek/cvparse">programming puzzle execution environment (github)</a></td></tr>
+        <tr><td>2013</td><td>Java: <a href="https://github.com/mikebochenek/brainstorm">social brainstorming (github)</a></td></tr>
+        <tr><td>2013</td><td>Go &amp; bootstrap: <a href="https://github.com/mikebochenek/mychat">mychat (github)</a></td></tr>
+        <tr><td>2014</td><td>Ruby: <a href="https://github.com/mikebochenek/learning/tree/master/ruby">Swiss Zillow (github)</a></td></tr>
+        <tr><td>2015</td><td>Ruby: Arvados <a href="http://www.bochenek.ch/blog/coding/2015/03/13/arvados-database-model/">db schema</a> <a href="http://www.bochenek.ch/blog/coding/2015/03/13/arvados-brakeman/">running brakeman</a></td></tr>
+        <tr><td>2015</td><td>Scala Play &amp; AngularJS &amp; bootstrap: <a href="http://www.idone.ch/">idone.ch</a></td></tr>
+        <tr><td>2015</td><td>Android: <a href="https://play.google.com/store/apps/details?id=ch.bochenek.android.memory">Swiss Memory</a></td></tr>
+        <tr><td>2015</td><td>Google App Engine: <a href="https://copper-bot-93117.appspot.com">Swiss Memory backend</a></td></tr>
+      </table>
+
+
+      <div id="datets">ts</div>
+    </div>
+    <div class="col-md-3"></div>
+ 
+  </div>
+</div>
+
+
+</body>
+</html>
+
